@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <div class="group">
+  <%= link_to("New Movie", new_group_path, class: "btn btn -primary pull-right") %>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Title</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+    <tr>
+      <td>#</td>
+      <td><%= link_to(group.title, grup_path(group)) %></td>
+      <td><%= group.description %></td>
+      <td>
+        <%= link_to("review", review_group_path(group), class: "btnbtn-fefault") %>
+        <%= link_to("Delete", group_path(group), class: "btn btnbtn-fefault", data: {confirm: "HAHA,Are you crazy?" } ) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
