@@ -14,11 +14,11 @@
     <% @groups.each do |group| %>
     <tr>
       <td>#</td>
-      <td><%= link_to(group.title, grup_path(group)) %></td>
+      <td><%= link_to(group.title, group_path(group)) %></td>
       <td><%= group.description %></td>
       <td>
-        <%= link_to("review", review_group_path(group), class: "btnbtn-fefault") %>
-        <%= link_to("Delete", group_path(group), class: "btn btnbtn-fefault", data: {confirm: "HAHA,Are you crazy?" } ) %>
+        <%= link_to("Edit",edit_group_path(group), class: "btn btn-fefault") %>
+        <%= link_to("Delete",group_path(group), class: "btn btnbtn-fefault", data: {confirm: "HAHA,Are you crazy?" } ) %>
       </td>
     </tr>
     <% end %>
