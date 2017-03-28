@@ -1,27 +1,27 @@
 <div class="col-md-12">
 
-  <h2 class="text-center"> 我的收藏 </h2>
+  <h2 class="text-center"> 我的评论 </h2>
 
   <table class="table">
     <thead>
       <tr>
-        <th> content </th>
-        <th> Group Name </th>
-        <th> Last Update </th>
+        <th> 电影名称 </th>
+        <th> 评论内容 </th>
+        <th> 最新评论 </th>
         <th colspan="2"></th>
       </tr>
     </thead>
 
-<tbody>
-  <% @posts.each do |post| %>
-  <tr>
-    <td> <%= post.content %> </td>
-    <td> <%= post.group.title %> </td>
-    <td> <%= post.updated_at %> </td>
-    <td> <%= link_to('Edit',edit_group_post_path(post.group, post), class: "btn ben-default btn-xs") %></td>
-    <td> <%= link_to('Delete', group_post_path(post.group, post), method: :deleted, data: { confirm: "Are you sure?"}, class: "btn btn-default btn-xs") %></td>
-  </tr>
-  <% end %>
-</tbody>
-</table>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <th> <%= post.group.title %> </th>
+          <th> <%= post.content %> </th>
+          <th> <%= post.updated_at %> </th>
+          <th> <%= link_to('修改', edit_group_post_path(post.group, post), class: "btn btn-default btn-xs") %></th>
+          <th> <%= link_to('删除', group_post_path(post.group, post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

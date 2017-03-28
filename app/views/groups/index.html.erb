@@ -1,18 +1,18 @@
 <div class="col-md-12">
   <div class="group">
-  <%= link_to("New Movie", new_group_path, class: "btn btn -primary pull-right") %>
+  <%= link_to("新增影片", new_group_path, class: "btn btn -primary pull-right") %>
 </div>
 <table class="table table-hover">
   <thead>
     <tr>
       <td>#</td>
-      <td>Title</td>
-      <td>Description</td>
-      <td>Creator></td>
+      <td>电影</td>
+      <td>简介</td>
+      <td>创建人</td>
     </tr>
   </thead>
   <tbody>
-    <%= render :partial =>"group_item", :colection => @groups, :as => :group %>
+    <%= render :partial => "group_item", :collection => @groups, :as => :group %>
   </tbody>
 </table>
 </div>

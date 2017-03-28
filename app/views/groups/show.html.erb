@@ -4,17 +4,18 @@
     <span class="pull-right">
       <% if current_user && current_user.is_member_of?(@group) %>
         <label class="label label-success"> 已收藏 </label>
-        <%= link_to("放弃收藏", quit_group_path(@group), method: :post, class: "btn btn-default") %>
-      <% else %>
+        <%= link_to("放弃收藏", quit_group_path(@group), method: :post, class: "btn btn-default")%>
+        <% end %>
+        <% if current_user != @group.user %>
         <label class="label label-warning"> 写评论，请收藏 </label>
         <%= link_to("收藏", join_group_path(@group), method: :post, class: "btn btn-default") %>
       <% end %>
     </span>
     <% if current_user && current_user.is_member_of?(@group) %>
-    <%= link_to("喜欢／吐槽", new_group_post_path(@group), class: "btn ben-default pull-right")%>
-      <% end %>
-    <% if current_user && current_user = @group.user %>
-    <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right") %>
+    <%= link_to("喜欢／吐槽", new_group_post_path(@group), class: "btn btn-default pull-right")%>
+    <% end %>
+  <% if current_user == @group.user %>
+    <%= link_to("修改", edit_group_path(@group), class: "btn btn-primary pull-right") %>
   <% end %>
   </div>
   <table class="table table-hover">
