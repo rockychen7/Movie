@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
     @group.user = current_user
 
     if @group.save
+      current_user.join!(@group)
     redirect_to groups_path
   else
     render :new
@@ -39,6 +40,30 @@ end
 
     redirect_to groups_path, notice: "Update Success"
   end
+
+  def join
+    @group = Group.find(params[:id])
+
+    if !current_user.is_member_of?(@group)
+      current_user.join!(@group)
+      flash[:notice] = "成功收藏！"
+    else
+      flash[:warning] = "已收藏！"
+    end
+      redirect_to group_path(@group)
+    end
+
+    def quit
+      @group = Group.find(params[:id])
+
+      if current_user.is_member_of?(@group)
+        current_user.quit!(@group)
+        flash[:alert] = "懒得参与！"
+      else
+        flash[:warning] = "与你何干？"
+      end
+      redirect_to groups_path(@group)
+    end
 
   private
   def find_group_and_check_permission
